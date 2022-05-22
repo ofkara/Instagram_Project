@@ -94,6 +94,7 @@ if(edit_UnfollowRate > edit_UnfollowNumber){
 	IniWrite, %edit_UnfollowNumber%, settings.ini, UNFOLLOW, edit_UnfollowNumber
 	IniWrite, %edit_UnfollowRate%, settings.ini, UNFOLLOW, edit_UnfollowRate
 }
+Notify("Save", "Saving is completed!", 5)
 return
 
 

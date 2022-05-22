@@ -3,7 +3,6 @@
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 SetBatchLines -1
-#Include notify.ahk
 
 ;GUI CONGIGURATION
 ;---------------------------------------------------------------------------------------
@@ -37,23 +36,6 @@ Gui Add, GroupBox, x34 y128 w389 h85 +0xB00, Statistics
 Gui Add, Text, vtext_Follow x63 y152 w331 h23 +0x200 +0x1, Follow x people in y hour
 Gui Add, Text, vtext_Unfollow x62 y176 w333 h23 +0x200 +0x1, Unfollow x people in y hour
 
-
-
-
-;PUll DATA FROM SETTINGS.INI
-;---------------------------------------------------------------------------------------
-IniRead, edit_FollowNumber, settings.ini, FOLLOW, edit_FollowNumber
-IniRead, edit_FollowRate, settings.ini, FOLLOW, edit_FollowRate
-GuiControl,,edit_FollowNumber, %edit_FollowNumber%
-GuiControl,,edit_FollowRate, %edit_FollowRate%
-
-
-IniRead, edit_UnfollowNumber, settings.ini, UNFOLLOW, edit_UnfollowNumber
-IniRead, edit_UnfollowRate, settings.ini, UNFOLLOW, edit_UnfollowRate
-GuiControl,,edit_UnfollowNumber, %edit_UnfollowNumber%
-GuiControl,,edit_UnfollowRate, %edit_UnfollowRate%
-Gosub, Save
-
 Gui Show, w458 h241, Instagram Project
 Return
 
@@ -77,27 +59,24 @@ if(edit_followRate > edit_FollowNumber){
 	}else{
 		GuiControl,, text_Follow, Follow %edit_FollowNumber% people in %hour_follow% hour
 	}
-	IniWrite, %edit_FollowNumber%, settings.ini, FOLLOW, edit_FollowNumber
-	IniWrite, %edit_FollowRate%, settings.ini, FOLLOW, edit_FollowRate
 }
 
 
 if(edit_UnfollowRate > edit_UnfollowNumber){
-	MsgBox,16,Error!,The Unfollow rate cannot be bigger than people count
+	MsgBox,16,Error!,The follow rate cannot be bigger than people count
 }else{
 	hour_unfollow := Round((edit_UnfollowNumber / edit_UnfollowRate),0)
 	if(hour_unfollow > 1){
-		GuiControl,, text_Unfollow, Unfollow %edit_UnfollowNumber% people in %hour_unfollow% hours
+		GuiControl,, text_Follow, Follow %edit_UnfollowNumber% people in %hour_unfollow% hours
 	}else{
-		GuiControl,, text_Unfollow, Unfollow %edit_UnfollowNumber% people in %hour_unfollow% hour
+		GuiControl,, text_Follow, Follow %edit_UnfollowNumber% people in %hour_unfollow% hour
 	}
-	IniWrite, %edit_UnfollowNumber%, settings.ini, UNFOLLOW, edit_UnfollowNumber
-	IniWrite, %edit_UnfollowRate%, settings.ini, UNFOLLOW, edit_UnfollowRate
 }
+
+
 return
 
 
 GuiEscape:
 GuiClose:
-Gosub,Save
 ExitApp

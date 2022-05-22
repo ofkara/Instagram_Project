@@ -3,7 +3,6 @@
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 SetBatchLines -1
-#Include notify.ahk
 
 ;GUI CONGIGURATION
 ;---------------------------------------------------------------------------------------

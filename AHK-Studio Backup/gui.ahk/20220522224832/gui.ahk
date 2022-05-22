@@ -3,7 +3,6 @@
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 SetBatchLines -1
-#Include notify.ahk
 
 ;GUI CONGIGURATION
 ;---------------------------------------------------------------------------------------
@@ -52,7 +51,7 @@ IniRead, edit_UnfollowNumber, settings.ini, UNFOLLOW, edit_UnfollowNumber
 IniRead, edit_UnfollowRate, settings.ini, UNFOLLOW, edit_UnfollowRate
 GuiControl,,edit_UnfollowNumber, %edit_UnfollowNumber%
 GuiControl,,edit_UnfollowRate, %edit_UnfollowRate%
-Gosub, Save
+
 
 Gui Show, w458 h241, Instagram Project
 Return
