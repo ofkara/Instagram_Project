@@ -61,7 +61,7 @@ firefox_path = "C:\Program Files\Mozilla Firefox\firefox.exe"
 
 
 Start:
-Run C:\Program Files\Mozilla Firefox\firefox.exe https://www.instagram.com/omerfarukkara95/
+Run C:\Program Files\Mozilla Firefox\firefox.exe "www.autohotkey.com"
 return
 
 

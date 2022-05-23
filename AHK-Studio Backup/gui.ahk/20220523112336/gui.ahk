@@ -57,11 +57,11 @@ Gosub, Save
 Gui Show, w458 h241, Instagram Project
 Return
 
-firefox_path = "C:\Program Files\Mozilla Firefox\firefox.exe"
+firefox_path := C:\Program Files\Mozilla Firefox\firefox.exe
 
 
 Start:
-Run C:\Program Files\Mozilla Firefox\firefox.exe https://www.instagram.com/omerfarukkara95/
+Run %firefox_path% www.autohotkey.com
 return
 
 
