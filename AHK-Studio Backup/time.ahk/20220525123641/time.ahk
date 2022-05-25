@@ -1,0 +1,9 @@
+
+IniRead, followRate, settings.ini, FOLLOW, edit_FollowRate
+IniRead, followNumber, settings.ini, FOLLOW, edit_FollowNumber
+
+IniRead, unfollowNumber, settings.ini, FOLLOW, edit_UnfollowNumber
+IniRead, unfollowRate, settings.ini, FOLLOW, edit_UnfollowRate
+
+
+

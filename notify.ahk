@@ -1,4 +1,5 @@
 
+
 Notify(Title="!!!",Message="",Duration=30,Options="",Image="")
 {
 	Static        ;Options string: "TS=12 GC=Blue..."
