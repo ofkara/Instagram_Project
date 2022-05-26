@@ -75,6 +75,7 @@ Instagram_Helper_UnfollowPerson(person){
 	
 }
 
+
 Instagram_Helper_CheckFollowersPageOpen(){ 
 	xIsVisible:="|<>*149$27.y007vs01yDU0TUy07s3s1y0DUTU0y7s03ty00DzU00zs003y000TU007y001zs00TjU07sy01y3s0TUDU7s0y1y03sTU0Dbs00yy003zU00Ds000w"
 	Sleep 2000

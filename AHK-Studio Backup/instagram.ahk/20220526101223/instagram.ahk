@@ -18,7 +18,7 @@ Instagram_CloseFirefox(time){
 	sleep %time%
 	
 	Notify("Firefox","Firefox terminated!",5)
-	Send !{F4}
+	Ssend !{F4}
 
 }
 
@@ -50,7 +50,7 @@ Instagram_Helper_UnfollowPerson(person){
 		if (ok:=FindText(X:="wait", Y:=20, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
 		{
 			FindText().Click(X, Y, "L")
-			Instagram_CloseFirefox(2000)
+			Instagram_CloseFirefox(500)
 		}
 		
 	}
@@ -68,12 +68,13 @@ Instagram_Helper_UnfollowPerson(person){
 		{
 			FindText().Click(X, Y, "L")
 			
-			Instagram_CloseFirefox(2000)
+			Instagram_CloseFirefox(500)
 		}
 		
 	}
 	
 }
+
 
 Instagram_Helper_CheckFollowersPageOpen(){ 
 	xIsVisible:="|<>*149$27.y007vs01yDU0TUy07s3s1y0DUTU0y7s03ty00DzU00zs003y000TU007y001zs00TjU07sy01y3s0TUDU7s0y1y03sTU0Dbs00yy003zU00Ds000w"

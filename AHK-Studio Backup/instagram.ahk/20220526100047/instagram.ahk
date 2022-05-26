@@ -7,19 +7,23 @@ SetDefaultMouseSpeed, 0
 
 
 WinMaximize, Mozilla FireFox
-Instagram_Unfollow()
+;Instagram_Unfollow()
 ;Instagram_CloseFirefox(5000)
 
 
 
-Notify("Instagram", "Following Squence Started!", 2)
+Notify("Instagram", "Following Squence Started!",, 5)
 
 Instagram_CloseFirefox(time){
 	sleep %time%
 	
-	Notify("Firefox","Firefox terminated!",5)
-	Send !{F4}
-
+	if WinExist("Mozilla Firefox"){
+		WinActivate 
+		Notify("Firefox","Firefox terminated!",5)
+		Send !{F4}
+	}else{
+		Notify("Firefox","Firefox not Exist!",5)
+	}
 }
 
 Instagram_Unfollow(){
@@ -37,7 +41,6 @@ Instagram_Helper_UnfollowPerson(person){
 	
 	t1:=A_TickCount, X:=Y:=""
 	run %person% 
-	Sleep 5000
 	
 	request_button :="|<>*151$60.0000000007000000000700002000070000C000070000C000070000C000073s3wzkTU7bDy7wzkzkTzCCD4D1tsyTQ7C0C1UssDM7C0C3Uss7zzDkC3ztk7zz7sC3ztk7s00wC3U1k7Q00CC3U0sDQ00CC3k0sDT68S71sMwTDyDw7kzsTr3wDs3kTkDbU"
 	
@@ -47,10 +50,9 @@ Instagram_Helper_UnfollowPerson(person){
 		
 		unfollow :="|<>*191$63.000000T001zUD0007s00Dw1s001z001zUD000D000Dw1s001s001zUD000D000Dw1swyDz3y1zUD7jtzszsDw1szzDzDzVzUD7lwD3syDw1syDVsS3lzUD7UwD3kSDw1sw7VsS3lzUS7UwD3kSDy3kw7VsS3lvsy7UwD3syDTzUw7VsDzVtzs7UwD0zsD3y0w7Vs3w1w"
 		
-		if (ok:=FindText(X:="wait", Y:=20, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
+		if (ok:=FindText(X:="wait", Y:=10, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
 		{
 			FindText().Click(X, Y, "L")
-			Instagram_CloseFirefox(2000)
 		}
 		
 	}
@@ -58,22 +60,22 @@ Instagram_Helper_UnfollowPerson(person){
 	
 	man_button :="|<>*145$36.000Tz0000zzU000zzU000zzU001zzk001zzk001zzk01kzzU03kzzU07kzzU8DUTz0QT0Dy0yy01k0Tw0000Ds00007k0zzU3U3zzs007zzw00Dzzy00Tzzz00Tzzz00Tzzz00Tzzz00Tzzz00TzzzU"
 	
-	if (ok:=FindText(X, Y, 1315-150000, 293-150000, 1315+150000, 293+150000, 0, 0, man_button))
+	if (ok:=FindText(X:="wait", Y:=5, 1315-150000, 293-150000, 1315+150000, 293+150000, 0, 0, man_button))
 	{
 		FindText().Click(X, Y, "L")
 		
 		unfollow :="|<>*191$63.000000T001zUD0007s00Dw1s001z001zUD000D000Dw1s001s001zUD000D000Dw1swyDz3y1zUD7jtzszsDw1szzDzDzVzUD7lwD3syDw1syDVsS3lzUD7UwD3kSDw1sw7VsS3lzUS7UwD3kSDy3kw7VsS3lvsy7UwD3syDTzUw7VsDzVtzs7UwD0zsD3y0w7Vs3w1w"
 		
-		if (ok:=FindText(X:="wait", Y:=20, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
+		if (ok:=FindText(X:="wait", Y:=10, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
 		{
 			FindText().Click(X, Y, "L")
-			
-			Instagram_CloseFirefox(2000)
 		}
-		
 	}
 	
+	Sleep 10000
+	
 }
+
 
 Instagram_Helper_CheckFollowersPageOpen(){ 
 	xIsVisible:="|<>*149$27.y007vs01yDU0TUy07s3s1y0DUTU0y7s03ty00DzU00zs003y000TU007y001zs00TjU07sy01y3s0TUDU7s0y1y03sTU0Dbs00yy003zU00Ds000w"

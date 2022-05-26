@@ -6,76 +6,44 @@ SetDefaultMouseSpeed, 0
 
 
 
-WinMaximize, Mozilla FireFox
-Instagram_Unfollow()
-;Instagram_CloseFirefox(5000)
+WinMaximize, FireFox
+
+run https://www.instagram.com/the_marketingseed/
+Sleep 5000
 
 
 
-Notify("Instagram", "Following Squence Started!", 2)
 
-Instagram_CloseFirefox(time){
-	sleep %time%
-	
-	Notify("Firefox","Firefox terminated!",5)
+t1:=A_TickCount, X:=Y:=""
+
+Notify("Instagram", "Following Squence Started!",, 5)
+
+Instagram_CloseFirefox(){
+	WinMaximize, FireFox
 	Send !{F4}
-
 }
 
-Instagram_Unfollow(){
+Instagram_Unfollow(arr){
 	FileRead,csv_followed, followed.csv
 	UNFOLLOW := []
 	Excel_GetUserDataFromCSV(csv_followed, UNFOLLOW)
-	loop_size := UNFOLLOW.Length()
-	Loop %loop_size% {
-		Person := UNFOLLOW[A_Index]
-		Instagram_Helper_UnfollowPerson(person)
-	}
+	
 }
 
 Instagram_Helper_UnfollowPerson(person){
 	
-	t1:=A_TickCount, X:=Y:=""
-	run %person% 
-	Sleep 5000
-	
-	request_button :="|<>*151$60.0000000007000000000700002000070000C000070000C000070000C000073s3wzkTU7bDy7wzkzkTzCCD4D1tsyTQ7C0C1UssDM7C0C3Uss7zzDkC3ztk7zz7sC3ztk7s00wC3U1k7Q00CC3U0sDQ00CC3k0sDT68S71sMwTDyDw7kzsTr3wDs3kTkDbU"
-	
-	if (ok:=FindText(X, Y, 1142-150000, 293-150000, 1142+150000, 293+150000, 0, 0, request_button))
+	requested_button := "|<>*152$59.000000000C000000000Q0000M0000s0001k0001k0003U0003U0007000077s3szkT0DiTsTtzXz0zxlssks773nz1nU1kQ7D1y3bU3UkCQ3zz7k73zws7zy7sC7ztkDk03sQC03UTU01ksC070zU03VkQ0D3rVa73owADDbzDy7szsTz7wDk7kTUDD"
+	following_button := "<>*152$68.000001k0000000000Q000000000070000000000000000000000000000000000000003wC3Utkts1xnzVkwAQDz0zxswQD773tsSTQ777llksCD1y0tlgMQC3XUTUCCP673Uss7s3XavVksCC1y0sv6sQC3XUTUC6lg73Uss7Q71wT1ksCD3rXkT7kQC3Vtwzs7Uw73UsTz3s0sC1ksC1tk0000000000Q0000000000700000000003U000000001Xs000000000TwU"
+	if (ok:=FindText(X, Y, 1000-150000, 256-150000, 1000+150000, 256+150000, 0, 0, requested_button))
 	{
 		FindText().Click(X, Y, "L")
-		
-		unfollow :="|<>*191$63.000000T001zUD0007s00Dw1s001z001zUD000D000Dw1s001s001zUD000D000Dw1swyDz3y1zUD7jtzszsDw1szzDzDzVzUD7lwD3syDw1syDVsS3lzUD7UwD3kSDw1sw7VsS3lzUS7UwD3kSDy3kw7VsS3lvsy7UwD3syDTzUw7VsDzVtzs7UwD0zsD3y0w7Vs3w1w"
-		
-		if (ok:=FindText(X:="wait", Y:=20, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
-		{
-			FindText().Click(X, Y, "L")
-			Instagram_CloseFirefox(2000)
-		}
-		
 	}
 	
-	
-	man_button :="|<>*145$36.000Tz0000zzU000zzU000zzU001zzk001zzk001zzk01kzzU03kzzU07kzzU8DUTz0QT0Dy0yy01k0Tw0000Ds00007k0zzU3U3zzs007zzw00Dzzy00Tzzz00Tzzz00Tzzz00Tzzz00Tzzz00TzzzU"
-	
-	if (ok:=FindText(X, Y, 1315-150000, 293-150000, 1315+150000, 293+150000, 0, 0, man_button))
-	{
-		FindText().Click(X, Y, "L")
-		
-		unfollow :="|<>*191$63.000000T001zUD0007s00Dw1s001z001zUD000D000Dw1s001s001zUD000D000Dw1swyDz3y1zUD7jtzszsDw1szzDzDzVzUD7lwD3syDw1syDVsS3lzUD7UwD3kSDw1sw7VsS3lzUS7UwD3kSDy3kw7VsS3lvsy7UwD3syDTzUw7VsDzVtzs7UwD0zsD3y0w7Vs3w1w"
-		
-		if (ok:=FindText(X:="wait", Y:=20, 938-150000, 715-150000, 938+150000, 715+150000, 0, 0, unfollow))
-		{
-			FindText().Click(X, Y, "L")
-			
-			Instagram_CloseFirefox(2000)
-		}
-		
-	}
 	
 }
 
-Instagram_Helper_CheckFollowersPageOpen(){ 
+
+Instagram_Helper_CheckFollowersPageOpen(){
 	xIsVisible:="|<>*149$27.y007vs01yDU0TUy07s3s1y0DUTU0y7s03ty00DzU00zs003y000TU007y001zs00TjU07sy01y3s0TUDU7s0y1y03sTU0Dbs00yy003zU00Ds000w"
 	Sleep 2000
 	if (ok:=FindText(X, Y, 1000-150000, 256-150000, 1000+150000, 256+150000, 0, 0, xIsVisible))

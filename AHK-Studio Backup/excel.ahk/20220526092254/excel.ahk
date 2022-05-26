@@ -4,6 +4,13 @@ global USERS_START_ROW = 1+1
 global NOTIFY_FLAG = 1
 FileRead,csv, database.csv
 
+
+
+INFLUENCERS := []
+Excel_GetUserDataFromCSV(csv, INFLUENCERS)
+THE_INFLUENCER := Excel_GenerateInfluencer(INFLUENCERS)
+link := Excel_GenerateLink(THE_INFLUENCER)
+Run %link%
 WinMaximize, FireFox
 
 Excel_GenerateLink(THE_INFLUENCER){
